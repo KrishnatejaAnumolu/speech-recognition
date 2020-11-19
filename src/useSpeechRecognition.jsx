@@ -1,23 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSpeechRecognition } from 'react-speech-kit';
-import { Container,MyButton,ButtonContainer } from './subcomponents';
-
+import { Container, MyButton } from './subcomponents';
+import axios from 'axios'
 
 const SpeechRecognition = () => {
   const lang = 'en-IN'
   const [value, setValue] = useState('');
-  // const [lastValue, setlastValue] = useState('');
+  const [data, setData] = useState([]);
 
   const [blocked, setBlocked] = useState(false);
 
   const onEnd = () => {
-    // console.log('Last value - ', lastValue)
+    // axios.post('example', {
+    //   "value": { value }
+    // })
+    //   .then((response) => {
+    //     console.log(response);
+    //   }, (error) => {
+    //     console.log(error);
+    //   });
   };
 
   const onResult = (result) => {
-    setValue(value + result+ '\n');
-    // setlastValue(result)
+    setValue(result);
   };
+
+  useEffect(() => {
+    axios
+      .get('https://run.mocky.io/v3/74c13f67-8c59-40d0-9a34-c5febaca7fe8')
+      .then(res => {
+        setData(res.data)
+      })
+  }, [])
+
+  console.log(data)
 
   const onError = (event) => {
     if (event.error === 'not-allowed') {
@@ -34,9 +50,9 @@ const SpeechRecognition = () => {
   const toggle = listening
     ? stop
     : () => {
-        setBlocked(false);
-        listen({ lang });
-      };
+      setBlocked(false);
+      listen({ lang });
+    };
 
   return (
     <Container>
@@ -56,26 +72,23 @@ const SpeechRecognition = () => {
               name="transcript"
               placeholder="Click Listen and start talking..."
               value={value}
-              rows={10}
+              rows={4}
               disabled
             />
-            <MyButton disabled={blocked} type="button" onClick={toggle}>
-              {listening ? 'Stop' : 'Listen'}
+            <MyButton disabled={blocked} type="button" onClick={toggle} >
+              {listening ? 'Stop' : 'Start'}
             </MyButton>
             {blocked && (
               <p style={{ color: 'red' }}>
                 The microphone is blocked for this site in your browser.
               </p>
             )}
-            <label> Or you can Pick one from below: </label>
-            <MyButton type="button">Make a payment for last statement balance with savings account</MyButton>
-            <MyButton type="button">Make a payment for current statement balance with checking account</MyButton>
-            <MyButton>Make a payment for min amount due  with salary account</MyButton>
-            <MyButton>Make a payment for 10$ with chase account</MyButton>
+            <p style={{ fontWeight: "bold" }}> Or you can Pick one from below: </p>
+            <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap" }}>{data.slice(0, 4).map(one => <button key={one.id} style={{ width: "45%", height: "60px", textAlign: "center", fontSize: "12px", marginBottom: "20px", marginLeft: "0px" }}>{one.body}</button>)}</div>
           </React.Fragment>
         )}
       </form>
-    </Container>
+    </Container >
   );
 };
 

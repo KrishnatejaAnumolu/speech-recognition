@@ -48,10 +48,11 @@ export const Container = styled.div`
   max-width: 500px;
   button {
     border-radius: 4px;
-    font-size: 16px;
+    font-size: 14px;
     padding: 8px;
     text-align: center;
-    width: 50%;
+    width: 20%;
+    margin-left: 40%
   }
   h2 {
     margin-top: 0;
