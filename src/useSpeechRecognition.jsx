@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSpeechRecognition } from 'react-speech-kit';
 import { Container, MyButton } from './subcomponents';
 import axios from 'axios'
+// import { useHistory } from 'react-router-dom';
 
 const SpeechRecognition = () => {
   const lang = 'en-IN'
@@ -83,12 +84,37 @@ const SpeechRecognition = () => {
                 The microphone is blocked for this site in your browser.
               </p>
             )}
-            <p style={{ fontWeight: "bold" }}> Or you can Pick one from below: </p>
-            <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap" }}>{data.slice(0, 4).map(one => <button key={one.id} style={{ width: "45%", height: "60px", textAlign: "center", fontSize: "12px", marginBottom: "20px", marginLeft: "0px" }}>{one.body}</button>)}</div>
+            <p style={{ fontWeight: "bold" }}>
+              {" "}
+              Or you can Pick one from below:{" "}
+            </p>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                flexWrap: "wrap",
+              }}
+            >
+              {data.slice(0, 4).map((one) => (
+                <button
+                  key={one.id}
+                  style={{
+                    width: "45%",
+                    height: "60px",
+                    textAlign: "center",
+                    fontSize: "12px",
+                    marginBottom: "20px",
+                    marginLeft: "0px",
+                  }}
+                >
+                  {one.body}
+                </button>
+              ))}
+            </div>
           </React.Fragment>
         )}
       </form>
-    </Container >
+    </Container>
   );
 };
 
