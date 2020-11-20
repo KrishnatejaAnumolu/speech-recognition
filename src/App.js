@@ -7,8 +7,8 @@ const App = () => {
   return (
     <div>
       <GlobalStyles />
-      <TitleWrapper><img src="Logo.png" alt="Logo" height='60'></img>
-        <Title>Speech to Text</Title>
+      <TitleWrapper><img src="Logo.svg" alt="Logo" height='40' style={{ marginRight: "40px" }}></img>
+        <Title>Intelligent UI</Title>
       </TitleWrapper>
       <Row>
         <SpeechRecognition />
