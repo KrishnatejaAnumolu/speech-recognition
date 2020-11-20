@@ -102,7 +102,7 @@ const SpeechRecognition = () => {
             <textarea
               id="transcript"
               name="transcript"
-              placeholder="Click Listen and start talking..."
+              placeholder="Click start and say something..."
               value={value}
               rows={4}
               disabled
