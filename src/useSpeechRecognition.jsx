@@ -28,13 +28,11 @@ const SpeechRecognition = () => {
 
   useEffect(() => {
     axios
-      .get('https://run.mocky.io/v3/74c13f67-8c59-40d0-9a34-c5febaca7fe8')
+      .get('https://hackathome-api.app.dev.dal.pcf.syfbank.com/utterances')
       .then(res => {
-        setData(res.data)
+        setData(res.data.utteranceList)
       })
   }, [])
-
-  console.log(data)
 
   const onError = (event) => {
     if (event.error === 'not-allowed') {
@@ -95,7 +93,7 @@ const SpeechRecognition = () => {
                 flexWrap: "wrap",
               }}
             >
-              {data.slice(0, 4).map((one) => (
+              {data.map((one) => (
                 <button
                   key={one.id}
                   style={{
