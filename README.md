@@ -1,3 +1,7 @@
+# Speech recognintion
+
+Submission for speech recognition Hackathon. Recognizes speec in natural language and sends it to the API server which then makes payments based on the speech.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
