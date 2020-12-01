@@ -98,7 +98,6 @@ const SpeechRecognition = () => {
         )}
         {supported && (
           <React.Fragment>
-            <label htmlFor="transcript">Transcript: </label>
             <textarea
               id="transcript"
               name="transcript"
