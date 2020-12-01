@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { API_HOST } from './const'
 
 const SpeechRecognition = () => {
-  const lang = 'en-IN'
+  const lang = 'en-US'
   const [value, setValue] = useState('');
   const [utteranceData, setutteranceData] = useState([]);
   const [paymentData, setpaymentData] = useState([]);
@@ -157,7 +157,7 @@ const SpeechRecognition = () => {
             </div>}
 
             {(paymentHistory.length > 0) && <div> <p style={{ fontWeight: "bold", color: "black" }}>Your payment History: </p><table cellspacing="0" cellpadding="0" style={{ width: "100%", fontSize: "14px" }}><tr><th>Date</th><th>Payment ID</th><th>ID</th><th>Last 4 digits</th><th>Sub type</th></tr>{paymentHistory.map((one) => (
-              <tr style={{ color: "black", fontSize: "10px" }}>
+              <tr style={{ color: "black", fontSize: "12px" }}>
                 <th>{one.scheduledDate}</th>
                 <th>{one.paymentId}</th>
                 <th>{one.fundingInstruments[0]["id"]}</th>
